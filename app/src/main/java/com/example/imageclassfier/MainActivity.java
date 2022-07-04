@@ -106,9 +106,14 @@ public class MainActivity extends AppCompatActivity {
                     maxPos = i;
                 }
             }
+// Check if % >= 80. if yes, print the suggestion else image could not be classified
 
             String [] classes = {"Apple","Banana","Orange"};
-            result.setText(classes[maxPos]);
+            if (maxConfidence >= 0.84){
+                result.setText(classes[maxPos]);
+            }else{
+                result.setText("Unclassfied ");
+            }
 
             // Releases model resources if no longer used.
             model.close();
